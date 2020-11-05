@@ -1,23 +1,25 @@
-import { SET_LOADING, SET_LOGIN, SET_USER } from '../actions/userActions';
+import { SET_LOADING,
+  SET_USERNAME,
+  SET_USER, 
+  SET_REPOS } from '../actions/userActions';
 
 const initialState = {
-  id: '',
-  login: '',
-  name: '',
-  followers: 0,
-  following: 0,
-  image: '',
+  userName: '',
+  profile: {},
+  repos:[],
   loading: true
 };
 
 export default function reducer(state = initialState, action) {
   switch(action.type) {
+    case SET_USERNAME:
+      return { ...state, userName: action.payload };
     case SET_USER:
-      return { ...state, ...action.payload };
+      return { ...state, profile: action.payload };
     case SET_LOADING:
       return { ...state, loading: action.payload };
-    case SET_LOGIN:
-      return { ...state, login: action.payload };
+    case SET_REPOS:
+      return { ...state, repos: action.payload };
     default:
       return state;
   }

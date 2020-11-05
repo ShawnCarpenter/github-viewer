@@ -1,28 +1,32 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUser, setLogin } from '../../actions/userActions';
+import { fetchRepos, fetchUser, setUserName } from '../../actions/userActions';
+import RepoList from '../repos/RepoList';
+import UserDetails from './UserDetails';
+import UserForm from './UserForm';
 
 const User = () => {
-  const login = useSelector(state => state.login);
+  const userName = useSelector(state => state.userName);
   const dispatch = useDispatch();
   
   const handleChange = ({ target }) => {
-    dispatch(setLogin(target.value));
+    dispatch(setUserName(target.value));
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(fetchUser(login));
-
+    dispatch(fetchUser(userName));
+    dispatch(fetchRepos(userName));
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input name="login"
-          onChange={handleChange}
-          value={login}/>
-        <button>Get User Info</button>
-      </form>
-    </div>
+    <>
+      <UserForm 
+        userName={userName}
+        onSubmit={handleSubmit}
+        onChange={handleChange}
+      />
+      <UserDetails />
+      <RepoList />
+    </>
   );
 };
 
