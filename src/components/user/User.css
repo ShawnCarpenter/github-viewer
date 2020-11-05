@@ -1,0 +1,47 @@
+.User {
+  button, input {
+    padding: .2rem;
+    margin: .2rem;
+  }
+
+  button:hover {
+    cursor: pointer;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    background-color: darkslateblue;
+    height: 3rem;
+  }
+}
+
+.Content{
+  display: grid;
+  grid-template-columns: 20% 1fr;
+  margin: .5rem;
+  img {
+    border-radius: 50%;
+    max-width: 15rem;
+  }
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 25%);
+    grid-auto-rows: auto;
+    list-style-type: none;
+  }
+
+  li {
+    border: .2rem solid darkslateblue;
+    border-radius: .3rem;
+    margin: .3rem;
+    padding: .3rem;
+    height: 10vh;
+
+  }
+  a, a:visited {
+    text-decoration: none;
+    color: black;
+  }
+
+}

@@ -4,6 +4,7 @@ import { fetchRepos, fetchUser, setUserName } from '../../actions/userActions';
 import RepoList from '../repos/RepoList';
 import UserDetails from './UserDetails';
 import UserForm from './UserForm';
+import styles from './User.css';
 
 const User = () => {
   const userName = useSelector(state => state.userName);
@@ -18,15 +19,20 @@ const User = () => {
     dispatch(fetchRepos(userName));
   };
   return (
-    <>
-      <UserForm 
-        userName={userName}
-        onSubmit={handleSubmit}
-        onChange={handleChange}
-      />
-      <UserDetails />
-      <RepoList />
-    </>
+    <div className={styles.User} >
+      <header>
+        <UserForm 
+          userName={userName}
+          onSubmit={handleSubmit}
+          onChange={handleChange}
+        />
+      </header>
+      <div className={styles.Content}>
+        <UserDetails />
+        <RepoList />
+      </div>
+      
+    </div>
   );
 };
 
